@@ -1,0 +1,9 @@
+.dart_tool/
+build/
+.flutter-plugins-dependencies
+**/local.properties
+**/.gradle/
+**/captures/
+.DS_Store
+**/*.iml
+**/.idea/

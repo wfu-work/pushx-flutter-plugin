@@ -1,0 +1,11 @@
+{
+  "protocolVersion": 1,
+  "kind": "business",
+  "notificationId": "delivery-1",
+  "subscriptionId": "subscription-1",
+  "bindingId": "binding-1",
+  "eventKey": "task-result:execution-1",
+  "expiresAt": 1893456000000,
+  "presentation": {"title": "任务状态已更新", "body": "请打开应用查看最新状态。", "sound": true},
+  "payload": {"type": "example", "resourceId": "task-1"}
+}
