@@ -1,7 +1,14 @@
 name: pushx_flutter
 description: Self-hosted Android push reception, durable inbox, acknowledgements and local notifications.
 version: 0.1.0
-publish_to: none
+repository: https://github.com/wfu-work/pushx-flutter-plugin
+issue_tracker: https://github.com/wfu-work/pushx-flutter-plugin/issues
+topics:
+  - push-notifications
+  - android
+  - self-hosted
+platforms:
+  android:
 environment:
   sdk: '>=3.12.0 <4.0.0'
   flutter: '>=3.44.0'

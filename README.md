@@ -2,15 +2,20 @@
 
 Android 自建推送接收 SDK，Flutter 3.44+/Dart 3.12+、Android API 24+。使用官方 Centrifuge Dart 客户端与前台服务、本地通知、SQLite、受保护存储插件。本工程是组合插件的 Flutter package，暂无自行维护的 Kotlin Service；目录名保留用户创建的 `pushx-flutter-plugin`。
 
-## 本地依赖与使用
+配套服务端为 [pushx-go-lib](https://github.com/wfu-work/pushx-go-lib)。宿主负责业务账号、安装登记和通知专用凭据签发；[示例](example/README.md) 提供 Go/Flutter 本地联调步骤。
+
+## 安装与使用
 
 使用工程 `pubspec.yaml`：
 
 ```yaml
 dependencies:
-  pushx_flutter:
-    path: /absolute/path/to/pushx-flutter-plugin
+  pushx_flutter: ^0.1.0
 ```
+
+运行 `flutter pub get` 后，通过 `import 'package:pushx_flutter/pushx_flutter.dart';` 使用。完整宿主配置见下方 Android 配置与 [示例](example/README.md)；本包只支持 Android 后台推送。
+
+本地开发 SDK 时，可将依赖改为 `pushx_flutter: {path: /absolute/path/to/pushx-flutter-plugin}`。
 
 ```dart
 final sdk = await Pushx.initialize(
@@ -108,8 +113,8 @@ cd example
 flutter build apk --release
 ```
 
-单测使用真实 SQLite FFI 和可控传输/通知边界；示例用于验证真实插件、后台 engine 和 HTTP/WS。`tool/contract_smoke.dart` 由上级 `tools/check_e2e.py` 启动，验证真实 Go/Dart 收发、ACK、离线同步、续期和撤销。独立 CI 包含 analyze/test/示例 Release APK 构建，尚未发布或运行远程 CI。只支持 Android 后台推送；其他平台的 UI facade 返回 unsupported。
+单测使用真实 SQLite FFI 和可控传输/通知边界；示例用于验证真实插件、后台 engine 和 HTTP/WS。`tool/contract_smoke.dart` 可通过 `PUSHX_TEST_URL` 与 `PUSHX_DEMO_TOKEN` 对接本地 Go SDK 示例，验证真实 Go/Dart 收发、ACK、离线同步、续期和撤销。CI 配置包含 analyze/test/示例 Release APK 构建。只支持 Android 后台推送；其他平台的 UI facade 返回 unsupported。
 
 常驻通知不等于系统推送特权。系统强行停止、深 Doze 或厂商后台限制都可能暂停服务，期望开启状态不代表服务实际存活。生产可靠性还依赖宿主的持久 outbox、授权撤销、TTL 和真实机型验收。
 
-底层依赖的版本见 pubspec/lockfile；Centrifuge、flutter_foreground_task、flutter_local_notifications、sqflite、flutter_secure_storage 等许可证须按各自发布包保留。自有代码公开发布和许可证由项目所有者决定。
+本包采用 [MIT License](LICENSE)。底层依赖的版本见 pubspec；Centrifuge、flutter_foreground_task、flutter_local_notifications、sqflite、flutter_secure_storage 等许可证须按各自发布包保留。

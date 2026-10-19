@@ -4,7 +4,7 @@
 
 ## 运行
 
-先在相邻的 `pushx-go-lib` 目录启动开发服务：
+先下载 [pushx-go-lib](https://github.com/wfu-work/pushx-go-lib)，与本工程同级放置，在其根目录启动开发服务：
 
 ```sh
 export PUSHX_DEMO_TOKEN='replace-with-your-local-demo-token'
@@ -46,4 +46,4 @@ curl -H "Authorization: Bearer $PUSHX_DEMO_TOKEN" \
 adb -s <serial> reverse --remove tcp:8099
 ```
 
-已执行的检查与未覆盖的系统场景见根目录 `docs/verification.md`。
+自动化检查与尚需真机验收的系统场景见 [SDK README](../README.md#验证与限制)。

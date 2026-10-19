@@ -1,0 +1,19 @@
+# .pubignore replaces .gitignore when pub selects upload files.
+.github/
+**/.dart_tool/
+**/build/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/pubspec.lock
+**/local.properties
+**/.gradle/
+**/captures/
+**/.DS_Store
+**/*.iml
+**/.idea/
+**/key.properties
+**/*.jks
+**/*.keystore
+example/android/gradlew
+example/android/gradlew.bat
+example/android/gradle/wrapper/gradle-wrapper.jar
